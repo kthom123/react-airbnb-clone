@@ -2,20 +2,25 @@ import React from "react"
 import Navbar from "./Navbar"
 import Hero from "./Hero"
 import Card from "./Card"
+import data from "./data"
 
 export default function App() {
-  return (
-    <div>
-      <Navbar />
-      <Hero />
-      <Card
-        img="swimmer.png"
-        rating="5.0"
-        reviewCount={6}
-        country="USA"
-        title="Life Lessons with Katie Zaferes"
-        price={136}
-      />
-    </div>
-  )
+    const cards = data.map(item => {
+        return (
+            <Card
+                key={item.id}
+                {...item}
+            />
+        )
+    })
+
+    return (
+      <div>
+            <Navbar />
+            <Hero />
+            <section className="cards-list">
+                {cards}
+            </section>
+        </div>
+    )
 }
